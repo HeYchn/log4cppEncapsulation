@@ -1,0 +1,8 @@
+2018-06-20 16:45:50,916 [WARN ] [test.cpp -> main -> line 5] hello log4cpp 1 hello 
+2018-06-20 16:45:50,917 [ERROR] [test.cpp -> main -> line 6] hello log4cpp 2 hello 
+2018-06-20 16:45:50,917 [DEBUG] [test.cpp -> main -> line 7] hello log4cpp 3 hello 
+2018-06-20 16:45:50,918 [INFO ] [test.cpp -> main -> line 8] hello log4cpp 4 hello 
+2018-06-20 17:32:15,094 [WARN ] [test.cpp -> main -> line 5] hello log4cpp 1 warn 
+2018-06-20 17:32:15,095 [ERROR] [test.cpp -> main -> line 6] hello log4cpp 2 error 
+2018-06-20 17:32:15,095 [DEBUG] [test.cpp -> main -> line 7] hello log4cpp 3 debug 
+2018-06-20 17:32:15,095 [INFO ] [test.cpp -> main -> line 8] hello log4cpp 4 info 

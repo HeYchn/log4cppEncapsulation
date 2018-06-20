@@ -27,22 +27,6 @@ void MyLog :: logShutDown(){
 	}
 }
 
-void MyLog :: warn(const char* msg){
-	_root.warn(msg);
-}
-
-void MyLog :: error(const char* msg){
-	_root.error(msg);
-}
-
-void MyLog :: debug(const char* msg){
-	_root.debug(msg);
-}
-
-void MyLog :: info(const char* msg){
-	_root.info(msg);
-}
-
 //显式构造函数,日志信息输出到终端和回卷文件//
 MyLog :: MyLog()
 :_root(Category :: getRoot().getInstance("root"))

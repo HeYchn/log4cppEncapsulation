@@ -11,10 +11,26 @@ class MyLog{
 public:
 	static MyLog* logInit();
 	void logShutDown();
-	void warn(const char* msg);
-	void error(const char* msg);
-	void debug(const char* msg);
-	void info(const char* msg);
+
+	template <typename... Args>
+	void warn(const char* msg, Args... args){
+		_root.warn(msg, args...);
+	}
+
+	template <typename... Args>
+	void error(const char* msg, Args... args){
+		_root.error(msg, args...);
+	}
+
+	template <typename... Args>
+	void debug(const char* msg, Args... args){
+		_root.debug(msg, args...);
+	}
+
+	template <typename... Args>
+	void info(const char* msg, Args... args){
+		_root.info(msg, args...);
+	}
 
 private:
 	MyLog();
@@ -26,6 +42,7 @@ private:
 	
 };
 
+
 //调用编译器提供的宏处理日志消息，使其提供文件名/函数名/行号信息//
 //此处应用宏命令替换函数以保证函数名和行号的输出达到预期结果//
 //注意行号转换成string类型，结果转为C型字符串//
@@ -33,9 +50,10 @@ private:
 	.append(" -> ").append("line ").append(std :: to_string(__LINE__)).append("] ").append(msg).c_str()
 
 //借助宏命令简化调用过程//
-#define LogWarn(msg) MyLog :: logInit() -> warn(MsgHandler(msg))
-#define LogError(msg) MyLog :: logInit() -> error(MsgHandler(msg))
-#define LogDebug(msg) MyLog :: logInit() -> debug(MsgHandler(msg))
-#define LogInfo(msg) MyLog :: logInit() -> info(MsgHandler(msg))
+#define LogWarn(msg, ...) MyLog :: logInit() -> warn(MsgHandler(msg), ##__VA_ARGS__)
+#define LogError(msg, ...) MyLog :: logInit() -> error(MsgHandler(msg), ##__VA_ARGS__)
+#define LogDebug(msg, ...) MyLog :: logInit() -> debug(MsgHandler(msg), ##__VA_ARGS__)
+#define LogInfo(msg, ...) MyLog :: logInit() -> info(MsgHandler(msg), ##__VA_ARGS__)
 
 #endif
+
